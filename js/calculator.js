@@ -4,6 +4,17 @@ function calculateSIP() {
     const years = Number(document.getElementById("years").value);
     const stepUp = Number(document.getElementById("stepUp").value) / 100;
     const inflationRate = Number(document.getElementById("inflation").value) / 100;
+    
+    if (
+    monthly < 0 ||
+    annualRate < 0 ||
+    years <= 0 ||
+    stepUp < 0 ||
+    inflationRate < 0
+) {
+    alert("Please enter valid non-negative values.");
+    return;
+}
 
     const monthlyRate = annualRate / 12;
     let futureValue = 0;
