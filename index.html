@@ -13,38 +13,44 @@
             Plan your wealth with step-up, inflation & tax adjustments.
         </p>
 
-        <div class="calculator">
+       <div class="calculator">
 
-            <label>
-                Monthly Investment (₹)
-                <input type="number" id="monthlyInvestment" value="15000" min="0">
-            </label>
+    <div class="inputs">
+        <!-- ALL your labels + inputs + button go here -->
+        <label>
+            Monthly Investment (₹)
+            <input type="number" id="monthlyInvestment" value="15000" min="0">
+        </label>
 
-            <label>
-                Expected Return (% p.a.)
-                <input type="number" id="returnRate" value="15" min="0" max="30" step="0.1">
-            </label>
-            
-            <label>
-                Investment Duration (Years)
-                <input type="number" id="years" value="15" min="1" max="60">
-            </label>
+        <label>
+            Expected Return (% p.a.)
+            <input type="number" id="returnRate" value="15">
+        </label>
 
-            <label>
-                Annual Step-Up (%)
-                <input type="number" id="stepUp" value="0" min="0" max="30" step="0.1">
-            </label>
+        <label>
+            Investment Duration (Years)
+            <input type="number" id="years" value="15">
+        </label>
 
-            <label>
-                Inflation Rate (%)
-                <input type="number" id="inflation" value="0" min="0" max="15" step="0.1">
-            </label>
+        <label>
+            Annual Step-Up (%)
+            <input type="number" id="stepUp" value="0">
+        </label>
 
-            <button onclick="calculateSIP()">Calculate</button>
+        <label>
+            Inflation Rate (%)
+            <input type="number" id="inflation" value="0">
+        </label>
 
-            <div id="result" class="result-card"></div>
+        <button onclick="calculateSIP()">Calculate</button>
+    </div>
 
-        </div>
+    <div class="result-card" id="result">
+        <!-- Results will appear here -->
+    </div>
+
+</div>
+
     </div>
 
     <script src="js/calculator.js"></script>

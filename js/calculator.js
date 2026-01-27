@@ -50,8 +50,9 @@ function calculateSIP() {
     if (years > 1) {
         const realValue = postTaxValue / Math.pow(1 + inflationRate, years);
         realValueText =
-            "<br><br><strong>Post-Tax Value (Today’s Money):</strong> ₹ " +
-            Math.round(realValue).toLocaleString("en-IN");
+    "<strong>Post-Tax Value (Today's Money)</strong>" +
+    "<span>₹ " + Math.round(realPostTaxValue).toLocaleString("en-IN") + "</span>";
+
     }
 
     // ✅ STEP 6: Display results
