@@ -1,14 +1,36 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Advanced SIP Calculator</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <title>Advanced SIP Calculator</title>
+    <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 
-  <h1>Advanced SIP Calculator</h1>
-  <p>This is my first public finance website.</p>
+    <h1>Advanced SIP Calculator</h1>
+    <p>Plan your wealth with step-up, inflation & tax adjustments.</p>
 
+    <div class="calculator">
+        <label>
+            Monthly Investment (₹):
+            <input type="number" id="monthlyInvestment" value="15000">
+        </label>
+
+        <label>
+            Expected Return (%):
+            <input type="number" id="returnRate" value="12">
+        </label>
+
+        <label>
+            Investment Duration (Years):
+            <input type="number" id="years" value="23">
+        </label>
+
+        <button onclick="calculateSIP()">Calculate</button>
+
+        <h2 id="result"></h2>
+    </div>
+
+    <script src="js/calculator.js"></script>
 </body>
 </html>
