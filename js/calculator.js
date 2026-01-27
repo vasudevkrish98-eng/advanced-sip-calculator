@@ -38,19 +38,31 @@ function calculateSIP() {
 
     // =========================
     // =========================
+// =========================
 // ✅ STEP 6: Tax calculation (India)
 // =========================
-    const applyTax = document.getElementById("applyTax").checked;
-    let postTaxValue = futureValue;
-    let taxAmount = 0;
-    if (applyTax) {
+
+      let postTaxValue = futureValue;
+      let taxAmount = 0;
+      let taxType = "LTCG";
+
+// Determine tax type based on duration
+if (years <= 1) {
+    // STCG for equity
+    taxType = "STCG";
+    taxAmount = (futureValue - totalInvestment) * 0.15;
+    postTaxValue = futureValue - taxAmount;
+} else {
+    // LTCG
     const gains = futureValue - totalInvestment;
-    const exemption = 125000; // ₹1.25L LTCG exemption
+    const exemption = 125000;
+
     if (gains > exemption) {
         taxAmount = (gains - exemption) * 0.10;
         postTaxValue = futureValue - taxAmount;
     }
-}  
+}
+
     
     // ✅ STEP 5: Display results
     // =========================
@@ -63,7 +75,8 @@ function calculateSIP() {
     Math.round(realValue).toLocaleString("en-IN") +
     "<br><br>" +
 
-    "Post-Tax Corpus (India): ₹ " +
+    "Post-Tax Corpus (" + taxType + "): ₹ " +
     Math.round(postTaxValue).toLocaleString("en-IN");
+
 
 }
