@@ -125,3 +125,10 @@ p {
         font-size: 20px;
     }
 }
+.gain {
+    color: #0a7a3b;   /* green */
+}
+
+.tax {
+    color: #c62828;   /* red */
+}

@@ -1,3 +1,20 @@
+function animateValue(element, start, end, duration) {
+    let startTime = null;
+
+    function animation(currentTime) {
+        if (!startTime) startTime = currentTime;
+        const progress = Math.min((currentTime - startTime) / duration, 1);
+        const value = Math.floor(progress * (end - start) + start);
+        element.innerText = "₹ " + value.toLocaleString("en-IN");
+
+        if (progress < 1) {
+            requestAnimationFrame(animation);
+        }
+    }
+
+    requestAnimationFrame(animation);
+}
+
 function calculateSIP() {
 
     let monthly = Number(document.getElementById("monthlyInvestment").value);
@@ -48,23 +65,21 @@ function calculateSIP() {
     const postTaxValue = futureValue - taxAmount;
     const postTaxRealValue = postTaxValue / Math.pow(1 + inflationRate, years);
 
-    // Output
-    document.getElementById("result").innerHTML =
-        "<strong>Invested Amount</strong>" +
-        "<span>₹ " + Math.round(totalInvestment).toLocaleString("en-IN") + "</span>" +
+// Output
+document.getElementById("result").innerHTML =
+    "<strong>Invested Amount</strong><span id='inv'></span>" +
+    "<strong>Estimated Gains</strong><span id='gain' class='gain'></span>" +
+    "<strong>Total Corpus (Pre-Tax)</strong><span id='pre'></span>" +
+    "<strong>Tax Amount (" + taxType + ")</strong><span id='tax' class='tax'></span>" +
+    "<strong>Total Corpus (Post-Tax)</strong><span id='post' class='highlight'></span>" +
+    "<strong>Post-Tax Value (Today’s Money)</strong><span id='real'></span>";
 
-        "<strong>Estimated Gains</strong>" +
-        "<span>₹ " + Math.round(gains).toLocaleString("en-IN") + "</span>" +
+animateValue(document.getElementById("inv"), 0, Math.round(totalInvestment), 800);
+animateValue(document.getElementById("gain"), 0, Math.round(gains), 900);
+animateValue(document.getElementById("pre"), 0, Math.round(futureValue), 1000);
+animateValue(document.getElementById("tax"), 0, Math.round(taxAmount), 900);
+animateValue(document.getElementById("post"), 0, Math.round(postTaxValue), 1100);
+animateValue(document.getElementById("real"), 0, Math.round(postTaxRealValue), 1100);
 
-        "<strong>Total Corpus (Pre-Tax)</strong>" +
-        "<span>₹ " + Math.round(futureValue).toLocaleString("en-IN") + "</span>" +
 
-        "<strong>Tax Amount (" + taxType + ")</strong>" +
-        "<span>₹ " + Math.round(taxAmount).toLocaleString("en-IN") + "</span>" +
-
-        "<strong>Total Corpus (Post-Tax)</strong>" +
-        "<span class='highlight'>₹ " + Math.round(postTaxValue).toLocaleString("en-IN") + "</span>" +
-
-        "<strong>Post-Tax Value (Today’s Money)</strong>" +
-        "<span>₹ " + Math.round(postTaxRealValue).toLocaleString("en-IN") + "</span>";
 }
