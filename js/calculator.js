@@ -50,10 +50,10 @@ function calculateSIP() {
 
     // Output
     document.getElementById("result").innerHTML =
-        "<strong>Total Invested</strong>" +
+        "<strong>Invested Amount</strong>" +
         "<span>₹ " + Math.round(totalInvestment).toLocaleString("en-IN") + "</span>" +
 
-        "<strong>Total Gains</strong>" +
+        "<strong>Estimated Gains</strong>" +
         "<span>₹ " + Math.round(gains).toLocaleString("en-IN") + "</span>" +
 
         "<strong>Total Corpus (Pre-Tax)</strong>" +
@@ -62,7 +62,7 @@ function calculateSIP() {
         "<strong>Tax Amount (" + taxType + ")</strong>" +
         "<span>₹ " + Math.round(taxAmount).toLocaleString("en-IN") + "</span>" +
 
-        "<strong>Post-Tax Corpus</strong>" +
+        "<strong>Total Corpus (Post-Tax)</strong>" +
         "<span class='highlight'>₹ " + Math.round(postTaxValue).toLocaleString("en-IN") + "</span>" +
 
         "<strong>Post-Tax Value (Today’s Money)</strong>" +
