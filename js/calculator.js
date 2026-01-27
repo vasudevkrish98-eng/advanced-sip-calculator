@@ -46,7 +46,7 @@ function calculateSIP() {
     }
 
     // ✅ STEP 5: Inflation adjustment (only for LTCG)
-    let realValueText = ""; // reset to avoid duplication
+    let realValueText = "";
     if (years > 1) {
         const realValue = postTaxValue / Math.pow(1 + inflationRate, years);
         realValueText =
@@ -62,5 +62,9 @@ function calculateSIP() {
         Math.round(gains).toLocaleString("en-IN") +
         "<br><br><strong>Total Corpus (Pre-Tax):</strong> ₹ " +
         Math.round(futureValue).toLocaleString("en-IN") +
-        "<br><br><strong>Tax Amount (" + t
+        "<br><br><strong>Tax Amount (" + taxType + "):</strong> ₹ " +
+        Math.round(taxAmount).toLocaleString("en-IN") +
+        "<br><br><strong>Post-Tax Corpus:</strong> ₹ " +
+        Math.round(postTaxValue).toLocaleString("en-IN") +
+        realValueText;
 }
