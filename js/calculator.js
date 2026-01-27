@@ -19,6 +19,8 @@ function calculateSIP() {
     const monthlyRate = annualRate / 12;
     let futureValue = 0;
     let totalInvestment = 0;
+    totalInvestment += monthly;
+
 
 
     // SIP + Step-up calculation
@@ -39,22 +41,22 @@ function calculateSIP() {
     // =========================
     // =========================
 // =========================
-// ✅ STEP 6: Tax calculation (India)
 // =========================
+// ✅ Tax calculation (India)
+// =========================
+let postTaxValue = futureValue;
+let taxAmount = 0;
+let taxType = "LTCG";
 
-      let postTaxValue = futureValue;
-      let taxAmount = 0;
-      let taxType = "LTCG";
+const gains = futureValue - totalInvestment;
 
-// Determine tax type based on duration
+// Decide tax type
 if (years <= 1) {
-    // STCG for equity
     taxType = "STCG";
-    taxAmount = (futureValue - totalInvestment) * 0.15;
+    taxAmount = gains > 0 ? gains * 0.15 : 0;
     postTaxValue = futureValue - taxAmount;
 } else {
-    // LTCG
-    const gains = futureValue - totalInvestment;
+    taxType = "LTCG";
     const exemption = 125000;
 
     if (gains > exemption) {
@@ -63,20 +65,42 @@ if (years <= 1) {
     }
 }
 
+// =========================
+// ✅ Inflation adjustment (ONLY for LTCG)
+// =========================
+let realValueText = "";
+
+if (years > 1) {
+    const realValue =
+        postTaxValue / Math.pow(1 + inflationRate, years);
+
+    realValueText =
+        "<br><br><strong>Post-Tax Value (Today’s Money):</strong> ₹ " +
+        Math.round(realValue).toLocaleString("en-IN");
+}
+
+
     
     // ✅ STEP 5: Display results
     // =========================
-    document.getElementById("result").innerHTML =
-    "Estimated Corpus (Pre-Tax): ₹ " +
+document.getElementById("result").innerHTML =
+    "<strong>Total Invested:</strong> ₹ " +
+    Math.round(totalInvestment).toLocaleString("en-IN") +
+
+    "<br><br><strong>Total Gains:</strong> ₹ " +
+    Math.round(gains).toLocaleString("en-IN") +
+
+    "<br><br><strong>Total Corpus (Pre-Tax):</strong> ₹ " +
     Math.round(futureValue).toLocaleString("en-IN") +
-    "<br><br>" +
 
-    "Value in today’s money (after inflation): ₹ " +
-    Math.round(realValue).toLocaleString("en-IN") +
-    "<br><br>" +
+    "<br><br><strong>Tax Amount (" + taxType + "):</strong> ₹ " +
+    Math.round(taxAmount).toLocaleString("en-IN") +
 
-    "Post-Tax Corpus (" + taxType + "): ₹ " +
-    Math.round(postTaxValue).toLocaleString("en-IN");
+    "<br><br><strong>Post-Tax Corpus:</strong> ₹ " +
+    Math.round(postTaxValue).toLocaleString("en-IN") +
+
+    realValueText;
+
 
 
 }
