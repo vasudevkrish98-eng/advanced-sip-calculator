@@ -55,16 +55,22 @@ function calculateSIP() {
     }
 
     // ✅ STEP 6: Display results
-    document.getElementById("result").innerHTML =
-        "<strong>Total Invested:</strong> ₹ " +
-        Math.round(totalInvestment).toLocaleString("en-IN") +
-        "<br><br><strong>Total Gains:</strong> ₹ " +
-        Math.round(gains).toLocaleString("en-IN") +
-        "<br><br><strong>Total Corpus (Pre-Tax):</strong> ₹ " +
-        Math.round(futureValue).toLocaleString("en-IN") +
-        "<br><br><strong>Tax Amount (" + taxType + "):</strong> ₹ " +
-        Math.round(taxAmount).toLocaleString("en-IN") +
-        "<br><br><strong>Post-Tax Corpus:</strong> ₹ " +
-        Math.round(postTaxValue).toLocaleString("en-IN") +
-        realValueText;
+document.getElementById("result").innerHTML =
+    "<strong>Total Invested</strong>" +
+    "<span>₹ " + Math.round(totalInvestment).toLocaleString("en-IN") + "</span>" +
+
+    "<strong>Total Gains</strong>" +
+    "<span>₹ " + Math.round(gains).toLocaleString("en-IN") + "</span>" +
+
+    "<strong>Total Corpus (Pre-Tax)</strong>" +
+    "<span>₹ " + Math.round(futureValue).toLocaleString("en-IN") + "</span>" +
+
+    "<strong>Tax Amount (" + taxType + ")</strong>" +
+    "<span>₹ " + Math.round(taxAmount).toLocaleString("en-IN") + "</span>" +
+
+    "<strong>Post-Tax Corpus</strong>" +
+    "<span>₹ " + Math.round(postTaxValue).toLocaleString("en-IN") + "</span>" +
+
+    realValueText;
+
 }

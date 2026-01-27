@@ -1,0 +1,85 @@
+body {
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    background: #f4f6f8;
+    margin: 0;
+    padding: 40px;
+}
+
+.sip-card {
+    max-width: 440px;
+    margin: auto;
+    background: #ffffff;
+    padding: 30px;
+    border-radius: 16px;
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
+}
+
+h1 {
+    margin-bottom: 6px;
+    font-size: 24px;
+}
+
+.subtitle {
+    color: #6b7280;
+    font-size: 14px;
+    margin-bottom: 24px;
+}
+
+.calculator label {
+    display: block;
+    font-size: 14px;
+    color: #374151;
+    margin-bottom: 16px;
+}
+
+.calculator input {
+    width: 100%;
+    padding: 10px;
+    margin-top: 6px;
+    font-size: 14px;
+    border-radius: 8px;
+    border: 1px solid #d1d5db;
+}
+
+.calculator input:focus {
+    outline: none;
+    border-color: #2563eb;
+}
+
+button {
+    width: 100%;
+    padding: 12px;
+    margin-top: 10px;
+    font-size: 15px;
+    font-weight: 600;
+    border-radius: 10px;
+    border: none;
+    background: #2563eb;
+    color: white;
+    cursor: pointer;
+}
+
+button:hover {
+    background: #1d4ed8;
+}
+
+.result-card {
+    margin-top: 24px;
+    padding: 16px;
+    background: #f9fafb;
+    border-radius: 12px;
+    font-size: 14px;
+}
+.result-card strong {
+    display: block;
+    font-weight: 600;
+    font-size: 14px;
+    color: #374151;
+    margin-top: 10px;
+}
+
+.result-card span {
+    font-size: 18px;
+    font-weight: 700;
+    color: #111827;
+}
