@@ -111,9 +111,11 @@ p {
 }
 
 /* ===== Mobile Friendly ===== */
+/* ===== Mobile Friendly ===== */
 @media (max-width: 768px) {
     .calculator {
-        grid-template-columns: 1fr;
+        grid-template-columns: 1fr;   /* Stack inputs & output */
+        gap: 20px;
     }
 
     .inputs,
@@ -121,10 +123,23 @@ p {
         padding: 22px;
     }
 
+    .result-card h3 {
+        font-size: 18px;
+        margin-bottom: 12px;
+    }
+
+    .result-card p {
+        font-size: 14px;
+        margin-bottom: 4px;
+    }
+
     .result-card span {
-        font-size: 20px;
+        font-size: 20px;   /* Amount size on mobile */
+        font-weight: 700;
     }
 }
+
+/* ===== Result Colors ===== */
 .gain {
     color: #0a7a3b;   /* green */
 }
@@ -132,3 +147,13 @@ p {
 .tax {
     color: #c62828;   /* red */
 }
+
+/* ===== Force gain & tax colors (override safety) ===== */
+#result span.gain {
+    color: #0a7a3b !important;
+}
+
+#result span.tax {
+    color: #c62828 !important;
+}
+
