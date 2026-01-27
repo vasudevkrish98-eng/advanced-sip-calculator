@@ -7,38 +7,45 @@
 </head>
 <body>
 
-    <h1>Advanced SIP Calculator</h1>
-    <p>Plan your wealth with step-up, inflation & tax adjustments.</p>
+    <div class="sip-card">
+        <h1>Advanced SIP Calculator</h1>
+        <p class="subtitle">
+            Plan your wealth with step-up, inflation & tax adjustments.
+        </p>
 
-    <div class="calculator">
-        <label>
-            Monthly Investment (₹):
-            <input type="number" id="monthlyInvestment" value="15000" min="0">
-        </label>
+        <div class="calculator">
 
-        <label>
-            Expected Return (%):
-            <input type="number" id="returnRate" value="15" min="0" max="30" step="0.1">
-        </label>
-        
-        <label>
-            Investment Duration (Years):
-            <input type="number" id="years" value="15" min="1" max="60">
-        </label>
+            <label>
+                Monthly Investment (₹)
+                <input type="number" id="monthlyInvestment" value="15000" min="0">
+            </label>
 
-        <label>
-            Annual Step-Up (%):
-            <input type="number" id="stepUp" value="0" min="0" max="30" step="0.1">
-        </label>
+            <label>
+                Expected Return (% p.a.)
+                <input type="number" id="returnRate" value="15" min="0" max="30" step="0.1">
+            </label>
+            
+            <label>
+                Investment Duration (Years)
+                <input type="number" id="years" value="15" min="1" max="60">
+            </label>
 
-        <label for="inflation">
-            Inflation Rate (%)
-           <input type="number" id="inflation" value="0" min="0" max="15" step="0.1">
+            <label>
+                Annual Step-Up (%)
+                <input type="number" id="stepUp" value="0" min="0" max="30" step="0.1">
+            </label>
 
-        <button onclick="calculateSIP()">Calculate</button>
+            <label>
+                Inflation Rate (%)
+                <input type="number" id="inflation" value="0" min="0" max="15" step="0.1">
+            </label>
 
-        <h2 id="result"></h2>
-        <div id="result"></div>
+            <button onclick="calculateSIP()">Calculate</button>
+
+            <div id="result" class="result-card"></div>
+
+        </div>
+    </div>
 
     <script src="js/calculator.js"></script>
 </body>
