@@ -382,4 +382,55 @@ p {
 .disclaimer p strong {
     color: #ef4444; /* Makes the word "Disclaimer" red for attention */
     text-transform: uppercase;
+}/* Tooltip Container */
+.info-icon {
+    display: inline-block;
+    cursor: help;
+    margin-left: 4px;
+    color: #2563eb;
+    font-size: 14px;
+    position: relative;
+}
+
+/* Tooltip Text (Hidden by default) */
+.info-icon::after {
+    content: attr(data-tooltip);
+    position: absolute;
+    bottom: 125%; /* Positions above the icon */
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #1f2937; /* Dark Gray */
+    color: #fff;
+    padding: 8px 12px;
+    border-radius: 6px;
+    font-size: 12px;
+    font-weight: normal;
+    white-space: normal;
+    width: 200px; /* Width of the popup */
+    z-index: 100;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.2s;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Tooltip Arrow */
+.info-icon::before {
+    content: "";
+    position: absolute;
+    top: -5px;
+    left: 50%;
+    transform: translateX(-50%);
+    border: 6px solid transparent;
+    border-top-color: #1f2937;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.2s;
+}
+
+/* Show Tooltip on Hover */
+.info-icon:hover::after,
+.info-icon:hover::before {
+    opacity: 1;
+    visibility: visible;
 }
