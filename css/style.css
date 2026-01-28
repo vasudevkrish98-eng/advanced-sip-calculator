@@ -17,7 +17,7 @@ h1 {
     margin-bottom: 6px;
 }
 
-p {
+.subtitle {
     text-align: center;
     color: #6b7280;
     margin-bottom: 30px;
@@ -28,11 +28,12 @@ p {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 32px;
-    max-width: 960px;
+    max-width: 1000px;
     margin: 0 auto;
+    align-items: start;
 }
 
-/* ===== Input Section ===== */
+/* ===== Input Section (Left Card) ===== */
 .inputs {
     background: #ffffff;
     padding: 25px;
@@ -56,6 +57,7 @@ p {
     border-radius: 8px;
     border: 1px solid #d1d5db;
     outline: none;
+    transition: border 0.2s;
 }
 
 .inputs input:focus {
@@ -65,7 +67,7 @@ p {
 /* ===== Button ===== */
 .inputs button {
     width: 100%;
-    margin-top: 20px;
+    margin-top: 10px;
     padding: 14px;
     font-size: 16px;
     font-weight: 600;
@@ -74,112 +76,72 @@ p {
     border: none;
     border-radius: 10px;
     cursor: pointer;
+    transition: background 0.2s;
 }
 
 .inputs button:hover {
     background: #1e40af;
 }
 
-/* ===== Result Card ===== */
+/* ===== Chart Container (Inside Left Card) ===== */
+.chart-container {
+    width: 100%;
+    margin-top: 25px;
+    margin-bottom: 20px;
+}
+
+/* ===== Result Card (Right Card) ===== */
 .result-card {
     background: #ffffff;
-    padding: 28px;
+    padding: 30px;
     border-radius: 14px;
     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+    display: flex;
+    flex-direction: column;
+    min-height: 500px; /* Ensures it aligns well with the left side */
 }
 
-/* Each label (title) */
-.result-card strong {
-    display: block;
+.result-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 18px 0;
+    border-bottom: 1px solid #f3f4f6;
+}
+
+.result-item:last-child {
+    border-bottom: none;
+}
+
+.result-item strong {
     font-size: 14px;
-    color: #6b7280;
-    margin-top: 18px;
+    color: #64748b;
+    font-weight: 500;
 }
 
-/* Each value (₹ amount) */
-.result-card span {
-    display: block;
-    font-size: 22px;
+.result-item span {
+    font-size: 20px;
     font-weight: 700;
-    color: #111827;
-    margin-top: 4px;
+    color: #1e293b;
 }
 
-/* First item spacing fix */
-.result-card strong:first-child {
-    margin-top: 0;
-}
+/* ===== Result Accent Colors ===== */
+.gain-value { color: #10b981 !important; }
+.tax-value { color: #ef4444 !important; }
+.total-value { color: #2563eb !important; font-size: 24px !important; }
 
 /* ===== Mobile Friendly ===== */
-/* ===== Mobile Friendly ===== */
-@media (max-width: 768px) {
+@media (max-width: 850px) {
     .calculator {
-        grid-template-columns: 1fr;   /* Stack inputs & output */
+        grid-template-columns: 1fr;
         gap: 20px;
     }
 
-    .inputs,
     .result-card {
-        padding: 22px;
+        min-height: auto;
     }
 
-    .result-card h3 {
-        font-size: 18px;
-        margin-bottom: 12px;
-    }
-
-    .result-card p {
-        font-size: 14px;
-        margin-bottom: 4px;
-    }
-
-    .result-card span {
-        font-size: 20px;   /* Amount size on mobile */
-        font-weight: 700;
-    }
-}
-
-/* ===== Result Colors ===== */
-.gain {
-    color: #0a7a3b;   /* green */
-}
-
-.tax {
-    color: #c62828;   /* red */
-}
-
-/* ===== Force gain & tax colors (override safety) ===== */
-#result span.gain {
-    color: #0a7a3b !important;
-}
-
-#result span.tax {
-    color: #c62828 !important;
-}
-.chart-container {
-    width: 100%;
-    min-height: 300px;
-}
-
-@media (max-width: 768px) {
     .chart-container {
-        height: 250px; /* Slightly smaller on mobile */
+        height: 250px;
     }
-}
-.result-card {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 15px;
-}
-
-.highlight-box {
-    background: #f8fafc;
-    padding: 15px;
-    border-radius: 10px;
-    border-left: 4px solid #2563eb;
-}
-
-.highlight-box span {
-    font-size: 24px;
-    color: #2563eb;
 }
