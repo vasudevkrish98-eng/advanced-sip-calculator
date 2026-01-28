@@ -146,57 +146,63 @@ sipChart = new Chart(ctx, {
             {
                 label: 'Total Corpus',
                 data: corpusData,
-                borderColor: '#2563eb',
-                backgroundColor: 'rgba(37, 99, 235, 0.1)',
-                fill: true,
-                tension: 0.4, // Makes the line smooth
+                borderColor: '#2563eb', // Solid Modern Blue
+                backgroundColor: '#2563eb',
                 borderWidth: 3,
-                pointRadius: 2
+                pointRadius: 0,         // Hide dots for a cleaner look
+                pointHoverRadius: 6,    // Only show dots on hover
+                tension: 0.3            // Professional smooth curve
             },
             {
-                label: 'Invested Value',
+                label: 'Amount Invested',
                 data: investedData,
-                borderColor: '#9ca3af',
-                backgroundColor: 'transparent',
-                fill: false,
-                tension: 0.4,
-                borderWidth: 2,
-                borderDash: [5, 5], // Dashed line for investment
-                pointRadius: 0
+                borderColor: '#10b981', // Solid Emerald Green (like your reference)
+                backgroundColor: '#10b981',
+                borderWidth: 3,
+                pointRadius: 0,
+                pointHoverRadius: 6,
+                tension: 0.3
             }
         ]
     },
     options: {
         responsive: true,
         maintainAspectRatio: false,
+        interaction: {
+            mode: 'index',      // This enables the "vertical line" behavior
+            intersect: false,   // Tooltip shows even if you aren't touching the line
+        },
         plugins: {
             legend: {
-                position: 'top',
-                labels: { font: { family: 'Segoe UI', size: 12 } }
+                display: true,
+                position: 'bottom', // Matches professional calculators
+                labels: { usePointStyle: true, padding: 20 }
             },
             tooltip: {
+                backgroundColor: '#1f2937', // Dark gray/black background
+                padding: 12,
+                titleFont: { size: 14, weight: 'bold' },
+                bodyFont: { size: 13 },
+                cornerRadius: 8,
+                displayColors: true,
                 callbacks: {
                     label: function(context) {
-                        return context.dataset.label + ": ₹" + context.raw.toLocaleString("en-IN");
+                        return ` ${context.dataset.label}: ₹${context.raw.toLocaleString("en-IN")}`;
                     }
                 }
             }
         },
         scales: {
+            x: {
+                grid: { display: false } // Cleans up the background
+            },
             y: {
                 beginAtZero: true,
                 ticks: {
-                    callback: function(value) {
-                        return '₹' + value.toLocaleString("en-IN");
-                    }
+                    callback: (value) => '₹' + value.toLocaleString("en-IN")
                 }
             }
-        },
-        animation: {
-            duration: 1500,
-            easing: 'easeInOutQuart'
         }
     }
 });
-
 }
