@@ -114,15 +114,27 @@ function calculateSIP() {
     const postTaxRealValue = postTaxValue / Math.pow(1 + inflationRate, years);
 
     // ===============================
-    // STEP 4: Output rendering
-    // ===============================
-    document.getElementById("result").innerHTML =
-        "<strong>Invested Amount</strong><span id='inv'></span>" +
-        "<strong>Estimated Gains</strong><span id='gain' class='gain'></span>" +
-        "<strong>Total Corpus (Pre-Tax)</strong><span id='pre'></span>" +
-        "<strong>Tax Amount (" + taxType + ") <span class='info-icon' data-tooltip='LTCG tax is 12.5% on gains exceeding ₹1.25 Lakh per year.'>ⓘ</span></strong><span id='tax' class='tax'></span>"+
-        "<strong>Total Corpus (Post-Tax)</strong><span id='post' class='highlight'></span>" +
-        "<strong>Post-Tax Value (Today’s Money)</strong><span id='real'></span>";
+ // Step 4: Inject Results into Right Card
+document.getElementById("result").innerHTML = `
+    <strong>Invested Amount</strong>
+    <span id="inv"></span>
+
+    <strong>Estimated Gains</strong>
+    <span id="gain"></span>
+
+    <strong>Total Corpus (Pre-Tax)</strong>
+    <span id="pre"></span>
+
+    <strong>Tax Amount (${taxType}) <span class="info-icon" data-tooltip="Calculated based on 12.5% LTCG after 1.25L exemption">ⓘ</span></strong>
+    <span id="tax"></span>
+
+    <strong>Total Corpus (Post-Tax)</strong>
+    <span id="post"></span>
+
+    <strong>Value in Today's Money <span class="info-icon" data-tooltip="Adjusted for the inflation rate selected">ⓘ</span></strong>
+    <span id="real"></span>
+`;
+
 
     // Animate numbers
     animateValue(document.getElementById("inv"), 0, Math.round(totalInvestment), 800);
