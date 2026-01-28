@@ -110,7 +110,7 @@ function calculateSIP() {
         "<strong>Invested Amount</strong><span id='inv'></span>" +
         "<strong>Estimated Gains</strong><span id='gain' class='gain'></span>" +
         "<strong>Total Corpus (Pre-Tax)</strong><span id='pre'></span>" +
-        "<strong>Tax Amount (" + taxType + ") <span class='info-icon' data-tooltip='LTCG tax is 12.5% on gains exceeding ₹1.25 Lakh per year.'>ⓘ</span></strong><span id='tax' class='tax'></span>"
+        "<strong>Tax Amount (" + taxType + ") <span class='info-icon' data-tooltip='LTCG tax is 12.5% on gains exceeding ₹1.25 Lakh per year.'>ⓘ</span></strong><span id='tax' class='tax'></span>"+
         "<strong>Total Corpus (Post-Tax)</strong><span id='post' class='highlight'></span>" +
         "<strong>Post-Tax Value (Today’s Money)</strong><span id='real'></span>";
 
