@@ -433,4 +433,15 @@ p {
 .info-icon:hover::before {
     opacity: 1;
     visibility: visible;
+}input[type="range"] {
+    width: 100%;
+    margin: 10px 0;
+    cursor: pointer;
+    accent-color: #2563eb; /* Matches your button blue */
+}
+
+.inputs input[type="number"] {
+    margin-top: 5px;
+    background: #f8fafc;
+    font-weight: 600;
 }

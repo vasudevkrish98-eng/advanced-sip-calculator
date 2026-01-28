@@ -2,6 +2,16 @@
 // Animated number counter
 // ===============================
 
+function syncInputs(sourceId, targetId) {
+    const source = document.getElementById(sourceId);
+    const target = document.getElementById(targetId);
+    target.value = source.value;
+    
+    // Automatically trigger calculation for real-time feel
+    calculateSIP();
+}
+
+
 let sipChart = null; // Global variable to track the chart instance
 
 function animateValue(element, start, end, duration) {
