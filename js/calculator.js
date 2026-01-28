@@ -1,6 +1,9 @@
 // ===============================
 // Animated number counter
 // ===============================
+
+let sipChart = null; // Global variable to track the chart instance
+
 function animateValue(element, start, end, duration) {
     let startTime = null;
 
@@ -125,4 +128,75 @@ function calculateSIP() {
     console.log("Years:", yearLabels);
     console.log("Invested:", investedData);
     console.log("Corpus:", corpusData);
+// ===============================
+// STEP 5: Chart Rendering
+// ===============================
+const ctx = document.getElementById('growthChart').getContext('2d');
+
+// Destroy previous chart instance if it exists to prevent overlap
+if (sipChart) {
+    sipChart.destroy();
+}
+
+sipChart = new Chart(ctx, {
+    type: 'line',
+    data: {
+        labels: yearLabels,
+        datasets: [
+            {
+                label: 'Total Corpus',
+                data: corpusData,
+                borderColor: '#2563eb',
+                backgroundColor: 'rgba(37, 99, 235, 0.1)',
+                fill: true,
+                tension: 0.4, // Makes the line smooth
+                borderWidth: 3,
+                pointRadius: 2
+            },
+            {
+                label: 'Invested Value',
+                data: investedData,
+                borderColor: '#9ca3af',
+                backgroundColor: 'transparent',
+                fill: false,
+                tension: 0.4,
+                borderWidth: 2,
+                borderDash: [5, 5], // Dashed line for investment
+                pointRadius: 0
+            }
+        ]
+    },
+    options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: {
+            legend: {
+                position: 'top',
+                labels: { font: { family: 'Segoe UI', size: 12 } }
+            },
+            tooltip: {
+                callbacks: {
+                    label: function(context) {
+                        return context.dataset.label + ": ₹" + context.raw.toLocaleString("en-IN");
+                    }
+                }
+            }
+        },
+        scales: {
+            y: {
+                beginAtZero: true,
+                ticks: {
+                    callback: function(value) {
+                        return '₹' + value.toLocaleString("en-IN");
+                    }
+                }
+            }
+        },
+        animation: {
+            duration: 1500,
+            easing: 'easeInOutQuart'
+        }
+    }
+});
+
 }

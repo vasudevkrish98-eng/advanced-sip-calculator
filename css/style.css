@@ -156,4 +156,13 @@ p {
 #result span.tax {
     color: #c62828 !important;
 }
+.chart-container {
+    width: 100%;
+    min-height: 300px;
+}
 
+@media (max-width: 768px) {
+    .chart-container {
+        height: 250px; /* Slightly smaller on mobile */
+    }
+}
