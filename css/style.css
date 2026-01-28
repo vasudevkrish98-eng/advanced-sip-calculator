@@ -1,338 +1,200 @@
- /* ===== Reset & Base ===== */
-
+/* ===== Reset & Base ===== */
 * {
-
     box-sizing: border-box;
-
     font-family: "Segoe UI", Roboto, Arial, sans-serif;
-
 }
-
-
 
 body {
-
     margin: 0;
-
     padding: 20px;
-
     background: #f3f4f6;
-
     color: #111827;
-
 }
-
-
-
-/* ===== Header ===== */
 
 h1 {
-
     text-align: center;
-
     margin-bottom: 6px;
-
 }
 
-
-
-p {
-
+p.subtitle {
     text-align: center;
-
     color: #6b7280;
-
     margin-bottom: 30px;
-
 }
-
-
 
 /* ===== Main Calculator Layout ===== */
-
 .calculator {
-
     display: grid;
-
     grid-template-columns: 1fr 1fr;
-
     gap: 32px;
-
-    max-width: 960px;
-
+    max-width: 1000px;
     margin: 0 auto;
-
+    align-items: start;
 }
 
-
-
-/* ===== Input Section ===== */
-
+/* ===== Input Section (Left Card) ===== */
 .inputs {
-
     background: #ffffff;
-
     padding: 25px;
-
     border-radius: 14px;
-
     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
-
 }
 
-
-
-.inputs label {
-
-    display: block;
-
-    margin-bottom: 18px;
-
-    font-size: 14px;
-
-    font-weight: 600;
-
-    color: #374151;
-
+.input-group {
+    margin-bottom: 15px; /* Tightened spacing */
 }
 
+.input-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 6px;
+}
 
-
-.inputs input {
-
-    width: 100%;
-
-    margin-top: 6px;
-
-    padding: 10px 12px;
-
+.input-header label {
     font-size: 15px;
+    font-weight: 600;
+    color: #374151;
+}
 
-    border-radius: 8px;
-
+/* Neutralized Value Box */
+.value-box {
+    background: #ffffff;
     border: 1px solid #d1d5db;
+    color: #111827;
+    padding: 6px 10px;
+    border-radius: 6px;
+    font-weight: 700;
+    font-size: 15px;
+    display: flex;
+    align-items: center;
+    min-width: 100px; /* Prevents text clipping */
+    justify-content: flex-end;
+}
 
+.value-box input {
+    background: transparent;
+    border: none;
+    width: 100%;
+    text-align: right;
+    font-weight: 700;
+    color: #111827;
     outline: none;
-
+    padding: 0;
 }
 
-
-
-.inputs input:focus {
-
-    border-color: #2563eb;
-
+/* Slider Styling */
+input[type="range"] {
+    -webkit-appearance: none;
+    width: 100%;
+    height: 5px;
+    background: #e2e8f0;
+    border-radius: 5px;
+    outline: none;
+    margin: 10px 0;
 }
 
-
+input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 18px;
+    height: 18px;
+    background: #ffffff;
+    border: 2px solid #2563eb;
+    border-radius: 50%;
+    cursor: pointer;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
 
 /* ===== Button ===== */
-
 .inputs button {
-
     width: 100%;
-
-    margin-top: 20px;
-
+    margin-top: 15px;
     padding: 14px;
-
     font-size: 16px;
-
     font-weight: 600;
-
     background: #2563eb;
-
     color: #ffffff;
-
     border: none;
-
     border-radius: 10px;
-
     cursor: pointer;
-
+    transition: background 0.2s;
 }
-
-
 
 .inputs button:hover {
-
     background: #1e40af;
-
 }
 
-
-
-/* ===== Result Card ===== */
-
-.result-card {
-
-    background: #ffffff;
-
-    padding: 28px;
-
-    border-radius: 14px;
-
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
-
-}
-
-
-
-/* Each label (title) */
-
-.result-card strong {
-
-    display: block;
-
-    font-size: 14px;
-
-    color: #6b7280;
-
-    margin-top: 18px;
-
-}
-
-
-
-/* Each value (₹ amount) */
-
-.result-card span {
-
-    display: block;
-
-    font-size: 22px;
-
-    font-weight: 700;
-
-    color: #111827;
-
-    margin-top: 4px;
-
-}
-
-
-
-/* First item spacing fix */
-
-.result-card strong:first-child {
-
-    margin-top: 0;
-
-}
-
-
-
-/* ===== Mobile Friendly ===== */
-
-/* ===== Mobile Friendly ===== */
-
-@media (max-width: 768px) {
-
-    .calculator {
-
-        grid-template-columns: 1fr;   /* Stack inputs & output */
-
-        gap: 20px;
-
-    }
-
-
-
-    .inputs,
-
-    .result-card {
-
-        padding: 22px;
-
-    }
-
-
-
-    .result-card h3 {
-
-        font-size: 18px;
-
-        margin-bottom: 12px;
-
-    }
-
-
-
-    .result-card p {
-
-        font-size: 14px;
-
-        margin-bottom: 4px;
-
-    }
-
-
-
-    .result-card span {
-
-        font-size: 20px;   /* Amount size on mobile */
-
-        font-weight: 700;
-
-    }
-
-}
-
-
-
-/* ===== Result Colors ===== */
-
-.gain {
-
-    color: #0a7a3b;   /* green */
-
-}
-
-
-
-.tax {
-
-    color: #c62828;   /* red */
-
-}
-
-
-
-/* ===== Force gain & tax colors (override safety) ===== */
-
-#result span.gain {
-
-    color: #0a7a3b !important;
-
-}
-
-
-
-#result span.tax {
-
-    color: #c62828 !important;
-
-}
-
+/* ===== Chart Container ===== */
 .chart-container {
-
     width: 100%;
-
-    min-height: 300px;
-
+    margin-top: 25px;
 }
 
+/* ===== Result Card (Right Card) ===== */
+.result-card {
+    background: #ffffff;
+    padding: 30px;
+    border-radius: 14px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+    display: flex;
+    flex-direction: column;
+}
 
+.result-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 16px 0;
+    border-bottom: 1px solid #f3f4f6;
+}
 
-@media (max-width: 768px) {
+.result-item:last-child {
+    border-bottom: none;
+}
 
-    .chart-container {
+.result-item strong {
+    font-size: 14px;
+    color: #64748b;
+    font-weight: 500;
+}
 
-        height: 250px; /* Slightly smaller on mobile */
+.result-item span {
+    font-size: 20px;
+    font-weight: 700;
+    color: #111827;
+}
 
-    }
+/* Accent Colors */
+.gain-value { color: #0a7a3b !important; }
+.tax-value { color: #c62828 !important; }
+.total-value { color: #2563eb !important; font-size: 24px !important; }
 
-}/* Assumptions Box Styling */
+/* ===== Tooltips ===== */
+.info-icon {
+    display: inline-block;
+    cursor: help;
+    margin-left: 4px;
+    color: #2563eb;
+    font-size: 14px;
+    position: relative;
+}
+
+.info-icon:hover::after {
+    content: attr(data-tooltip);
+    position: absolute;
+    bottom: 125%;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #1f2937;
+    color: #fff;
+    padding: 8px 12px;
+    border-radius: 6px;
+    font-size: 12px;
+    width: 200px;
+    z-index: 100;
+}
+
+/* ===== Assumptions & Disclaimer ===== */
 .assumptions-box {
     background: #f8fafc;
     padding: 20px;
@@ -343,165 +205,40 @@ p {
 
 .assumptions-box h3 {
     font-size: 14px;
-    margin-top: 0;
+    margin: 0 0 10px 0;
     color: #1e293b;
     text-transform: uppercase;
-    letter-spacing: 0.5px;
-}
-
-.assumptions-box ul {
-    margin: 0;
-    padding-left: 18px;
 }
 
 .assumptions-box li {
     font-size: 13px;
-    color: #64748b;
-    margin-bottom: 6px;
-    line-height: 1.4;
+    color: #475569;
+    margin-bottom: 5px;
 }
 
-/* Bottom Disclaimer Styling */
-/* Bottom Disclaimer Styling - Reader Friendly */
 .disclaimer {
-    max-width: 960px;
+    max-width: 1000px;
     margin: 40px auto 20px;
     padding: 20px;
     text-align: center;
-    border-top: 1px solid #d1d5db; /* Adds a clear separation line */
+    border-top: 1px solid #d1d5db;
 }
 
 .disclaimer p {
     font-size: 13px;
-    color: #000000; /* Solid Black */
-    font-weight: 600; /* Semi-bold */
+    color: #000000;
+    font-weight: 600;
     line-height: 1.6;
-    margin: 0;
 }
 
 .disclaimer p strong {
-    color: #ef4444; /* Makes the word "Disclaimer" red for attention */
-    text-transform: uppercase;
-}/* Tooltip Container */
-.info-icon {
-    display: inline-block;
-    cursor: help;
-    margin-left: 4px;
-    color: #2563eb;
-    font-size: 14px;
-    position: relative;
+    color: #ef4444;
 }
 
-/* Tooltip Text (Hidden by default) */
-.info-icon::after {
-    content: attr(data-tooltip);
-    position: absolute;
-    bottom: 125%; /* Positions above the icon */
-    left: 50%;
-    transform: translateX(-50%);
-    background-color: #1f2937; /* Dark Gray */
-    color: #fff;
-    padding: 8px 12px;
-    border-radius: 6px;
-    font-size: 12px;
-    font-weight: normal;
-    white-space: normal;
-    width: 200px; /* Width of the popup */
-    z-index: 100;
-    opacity: 0;
-    visibility: hidden;
-    transition: opacity 0.2s;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-}
-
-/* Tooltip Arrow */
-.info-icon::before {
-    content: "";
-    position: absolute;
-    top: -5px;
-    left: 50%;
-    transform: translateX(-50%);
-    border: 6px solid transparent;
-    border-top-color: #1f2937;
-    opacity: 0;
-    visibility: hidden;
-    transition: opacity 0.2s;
-}
-
-/* Show Tooltip on Hover */
-.info-icon:hover::after,
-.info-icon:hover::before {
-    opacity: 1;
-    visibility: visible;
-}input[type="range"] {
-    width: 100%;
-    margin: 10px 0;
-    cursor: pointer;
-    accent-color: #2563eb; /* Matches your button blue */
-}
-
-.inputs input[type="number"] {
-    margin-top: 5px;
-    background: #f8fafc;
-    font-weight: 600;
-}.input-group {
-    margin-bottom: 25px;
-}
-
-.input-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 10px;
-}
-
-.input-header label {
-    font-size: 15px;
-    font-weight: 500;
-    color: #475569;
-    margin: 0; /* Override previous label margins */
-}
-
-/* The Value Box (matches the green/teal light background in your pic) */
-.value-box {
-    background: #f0fdfa; 
-    color: #10b981;
-    padding: 6px 12px;
-    border-radius: 6px;
-    font-weight: 700;
-    font-size: 16px;
-    display: flex;
-    align-items: center;
-}
-
-.value-box input {
-    background: transparent;
-    border: none;
-    width: 60px;
-    text-align: right;
-    font-weight: 700;
-    color: #10b981;
-    outline: none;
-    margin: 0 2px;
-}
-
-/* Custom Slider Styling */
-input[type="range"] {
-    -webkit-appearance: none;
-    width: 100%;
-    height: 4px;
-    background: #e2e8f0;
-    border-radius: 5px;
-    outline: none;
-}
-
-input[type="range"]::-webkit-slider-thumb {
-    -webkit-appearance: none;
-    width: 18px;
-    height: 18px;
-    background: #ffffff;
-    border: 3px solid #10b981; /* Matches the theme color */
-    border-radius: 50%;
-    cursor: pointer;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+/* ===== Mobile Friendly ===== */
+@media (max-width: 850px) {
+    .calculator {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
 }
