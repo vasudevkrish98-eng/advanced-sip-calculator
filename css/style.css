@@ -362,15 +362,24 @@ p {
 }
 
 /* Bottom Disclaimer Styling */
+/* Bottom Disclaimer Styling - Reader Friendly */
 .disclaimer {
     max-width: 960px;
     margin: 40px auto 20px;
-    padding: 0 20px;
+    padding: 20px;
     text-align: center;
+    border-top: 1px solid #d1d5db; /* Adds a clear separation line */
 }
 
 .disclaimer p {
-    font-size: 12px;
-    color: #94a3b8;
+    font-size: 13px;
+    color: #000000; /* Solid Black */
+    font-weight: 600; /* Semi-bold */
     line-height: 1.6;
+    margin: 0;
+}
+
+.disclaimer p strong {
+    color: #ef4444; /* Makes the word "Disclaimer" red for attention */
+    text-transform: uppercase;
 }
