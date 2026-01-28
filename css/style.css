@@ -1,147 +1,335 @@
-/* ===== Reset & Base ===== */
+ /* ===== Reset & Base ===== */
+
 * {
+
     box-sizing: border-box;
+
     font-family: "Segoe UI", Roboto, Arial, sans-serif;
+
 }
+
+
 
 body {
+
     margin: 0;
+
     padding: 20px;
+
     background: #f3f4f6;
+
     color: #111827;
+
 }
+
+
 
 /* ===== Header ===== */
+
 h1 {
+
     text-align: center;
+
     margin-bottom: 6px;
+
 }
 
-.subtitle {
+
+
+p {
+
     text-align: center;
+
     color: #6b7280;
+
     margin-bottom: 30px;
+
 }
+
+
 
 /* ===== Main Calculator Layout ===== */
+
 .calculator {
+
     display: grid;
+
     grid-template-columns: 1fr 1fr;
+
     gap: 32px;
-    max-width: 1000px;
+
+    max-width: 960px;
+
     margin: 0 auto;
-    align-items: start;
+
 }
 
-/* ===== Input Section (Left Card) ===== */
+
+
+/* ===== Input Section ===== */
+
 .inputs {
+
     background: #ffffff;
+
     padding: 25px;
+
     border-radius: 14px;
+
     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+
 }
+
+
 
 .inputs label {
+
     display: block;
+
     margin-bottom: 18px;
+
     font-size: 14px;
+
     font-weight: 600;
+
     color: #374151;
+
 }
+
+
 
 .inputs input {
+
     width: 100%;
+
     margin-top: 6px;
+
     padding: 10px 12px;
+
     font-size: 15px;
+
     border-radius: 8px;
+
     border: 1px solid #d1d5db;
+
     outline: none;
-    transition: border 0.2s;
+
 }
+
+
 
 .inputs input:focus {
+
     border-color: #2563eb;
+
 }
+
+
 
 /* ===== Button ===== */
+
 .inputs button {
+
     width: 100%;
-    margin-top: 10px;
+
+    margin-top: 20px;
+
     padding: 14px;
+
     font-size: 16px;
+
     font-weight: 600;
+
     background: #2563eb;
+
     color: #ffffff;
+
     border: none;
+
     border-radius: 10px;
+
     cursor: pointer;
-    transition: background 0.2s;
+
 }
+
+
 
 .inputs button:hover {
+
     background: #1e40af;
+
 }
 
-/* ===== Chart Container (Inside Left Card) ===== */
-.chart-container {
-    width: 100%;
-    margin-top: 25px;
-    margin-bottom: 20px;
-}
 
-/* ===== Result Card (Right Card) ===== */
+
+/* ===== Result Card ===== */
+
 .result-card {
+
     background: #ffffff;
-    padding: 30px;
+
+    padding: 28px;
+
     border-radius: 14px;
+
     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
-    display: flex;
-    flex-direction: column;
-    min-height: 500px; /* Ensures it aligns well with the left side */
+
 }
 
-.result-item {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 18px 0;
-    border-bottom: 1px solid #f3f4f6;
-}
 
-.result-item:last-child {
-    border-bottom: none;
-}
 
-.result-item strong {
+/* Each label (title) */
+
+.result-card strong {
+
+    display: block;
+
     font-size: 14px;
-    color: #64748b;
-    font-weight: 500;
+
+    color: #6b7280;
+
+    margin-top: 18px;
+
 }
 
-.result-item span {
-    font-size: 20px;
+
+
+/* Each value (₹ amount) */
+
+.result-card span {
+
+    display: block;
+
+    font-size: 22px;
+
     font-weight: 700;
-    color: #1e293b;
+
+    color: #111827;
+
+    margin-top: 4px;
+
 }
 
-/* ===== Result Accent Colors ===== */
-.gain-value { color: #10b981 !important; }
-.tax-value { color: #ef4444 !important; }
-.total-value { color: #2563eb !important; font-size: 24px !important; }
+
+
+/* First item spacing fix */
+
+.result-card strong:first-child {
+
+    margin-top: 0;
+
+}
+
+
 
 /* ===== Mobile Friendly ===== */
-@media (max-width: 850px) {
+
+/* ===== Mobile Friendly ===== */
+
+@media (max-width: 768px) {
+
     .calculator {
-        grid-template-columns: 1fr;
+
+        grid-template-columns: 1fr;   /* Stack inputs & output */
+
         gap: 20px;
+
     }
+
+
+
+    .inputs,
 
     .result-card {
-        min-height: auto;
+
+        padding: 22px;
+
     }
 
-    .chart-container {
-        height: 250px;
+
+
+    .result-card h3 {
+
+        font-size: 18px;
+
+        margin-bottom: 12px;
+
     }
+
+
+
+    .result-card p {
+
+        font-size: 14px;
+
+        margin-bottom: 4px;
+
+    }
+
+
+
+    .result-card span {
+
+        font-size: 20px;   /* Amount size on mobile */
+
+        font-weight: 700;
+
+    }
+
+}
+
+
+
+/* ===== Result Colors ===== */
+
+.gain {
+
+    color: #0a7a3b;   /* green */
+
+}
+
+
+
+.tax {
+
+    color: #c62828;   /* red */
+
+}
+
+
+
+/* ===== Force gain & tax colors (override safety) ===== */
+
+#result span.gain {
+
+    color: #0a7a3b !important;
+
+}
+
+
+
+#result span.tax {
+
+    color: #c62828 !important;
+
+}
+
+.chart-container {
+
+    width: 100%;
+
+    min-height: 300px;
+
+}
+
+
+
+@media (max-width: 768px) {
+
+    .chart-container {
+
+        height: 250px; /* Slightly smaller on mobile */
+
+    }
+
 }
