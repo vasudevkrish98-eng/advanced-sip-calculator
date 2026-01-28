@@ -16,42 +16,53 @@
 
         <div class="calculator">
             <div class="inputs">
-               <label>
-               Monthly Investment (₹) <span class="info-icon" data-tooltip="The amount you invest every month.">ⓘ</span>
-               <input type="range" id="monthlyInvestmentSlider" min="1000" max="500000" step="500" value="15000" oninput="syncInputs('monthlyInvestmentSlider', 'monthlyInvestment')">
-               <input type="number" id="monthlyInvestment" value="15000" oninput="syncInputs('monthlyInvestment', 'monthlyInvestmentSlider')">
-               </label>
+    <div class="input-group">
+        <div class="input-header">
+            <label>Monthly Investment</label>
+            <div class="value-box">₹ <input type="number" id="monthlyInvestment" value="15000" oninput="syncInputs('monthlyInvestment', 'monthlyInvestmentSlider')"></div>
+        </div>
+        <input type="range" id="monthlyInvestmentSlider" min="1000" max="500000" step="500" value="15000" oninput="syncInputs('monthlyInvestmentSlider', 'monthlyInvestment')">
+    </div>
 
-               <label>
-               Expected Return (% p.a.) <span class="info-icon" data-tooltip="Estimated annual growth rate of your investment.">ⓘ</span>
-               <input type="range" id="returnRateSlider" min="5" max="30" step="0.5" value="15" oninput="syncInputs('returnRateSlider', 'returnRate')">
-               <input type="number" id="returnRate" value="15" oninput="syncInputs('returnRate', 'returnRateSlider')">
-               </label>
+    <div class="input-group">
+        <div class="input-header">
+            <label>Annual Step-Up <span class="info-icon" data-tooltip="Increase SIP every year">ⓘ</span></label>
+            <div class="value-box"><input type="number" id="stepUp" value="0" oninput="syncInputs('stepUp', 'stepUpSlider')"> %</div>
+        </div>
+        <input type="range" id="stepUpSlider" min="0" max="30" step="1" value="0" oninput="syncInputs('stepUpSlider', 'stepUp')">
+    </div>
 
-               <label>
-               Investment Duration (Years) <span class="info-icon" data-tooltip="Total time you plan to stay invested.">ⓘ</span>
-               <input type="range" id="yearsSlider" min="1" max="50" step="1" value="15" oninput="syncInputs('yearsSlider', 'years')">
-               <input type="number" id="years" value="15" oninput="syncInputs('years', 'yearsSlider')">
-               </label>
+    <div class="input-group">
+        <div class="input-header">
+            <label>Expected Return (p.a)</label>
+            <div class="value-box"><input type="number" id="returnRate" value="15" oninput="syncInputs('returnRate', 'returnRateSlider')"> %</div>
+        </div>
+        <input type="range" id="returnRateSlider" min="5" max="30" step="0.5" value="15" oninput="syncInputs('returnRateSlider', 'returnRate')">
+    </div>
 
-               <label>
-               Annual Step-Up (%) <span class="info-icon" data-tooltip="Percentage increase in your SIP amount every year.">ⓘ</span>
-               <input type="range" id="stepUpSlider" min="0" max="20" step="1" value="0" oninput="syncInputs('stepUpSlider', 'stepUp')">
-               <input type="number" id="stepUp" value="0" oninput="syncInputs('stepUp', 'stepUpSlider')">
-               </label>
+    <div class="input-group">
+        <div class="input-header">
+            <label>Time Period</label>
+            <div class="value-box"><input type="number" id="years" value="15" oninput="syncInputs('years', 'yearsSlider')"> Yr</div>
+        </div>
+        <input type="range" id="yearsSlider" min="1" max="50" step="1" value="15" oninput="syncInputs('yearsSlider', 'years')">
+    </div>
 
-               <label>
-               Inflation Rate (%) <span class="info-icon" data-tooltip="Expected annual inflation to calculate future purchasing power.">ⓘ</span>
-               <input type="range" id="inflationSlider" min="0" max="10" step="0.5" value="0" oninput="syncInputs('inflationSlider', 'inflation')">
-             <input type="number" id="inflation" value="0" oninput="syncInputs('inflation', 'inflationSlider')">
-             </label>
+    <div class="input-group">
+        <div class="input-header">
+            <label>Inflation Rate <span class="info-icon" data-tooltip="Future value adjustment">ⓘ</span></label>
+            <div class="value-box"><input type="number" id="inflation" value="0" oninput="syncInputs('inflation', 'inflationSlider')"> %</div>
+        </div>
+        <input type="range" id="inflationSlider" min="0" max="10" step="0.5" value="0" oninput="syncInputs('inflationSlider', 'inflation')">
+    </div>
 
-                <button onclick="calculateSIP()">Calculate</button>
+    <button onclick="calculateSIP()">Calculate</button>
 
-                <div class="chart-container" style="margin-top: 30px; position: relative; height:300px;">
-                    <canvas id="growthChart"></canvas>
-                </div>
-            </div>
+    <div class="chart-container" style="height:250px; margin-top:20px;">
+        <canvas id="growthChart"></canvas>
+    </div>
+</div>
+
 
             <div class="result-card" id="result">
             </div>

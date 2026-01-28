@@ -444,4 +444,64 @@ p {
     margin-top: 5px;
     background: #f8fafc;
     font-weight: 600;
+}.input-group {
+    margin-bottom: 25px;
+}
+
+.input-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.input-header label {
+    font-size: 15px;
+    font-weight: 500;
+    color: #475569;
+    margin: 0; /* Override previous label margins */
+}
+
+/* The Value Box (matches the green/teal light background in your pic) */
+.value-box {
+    background: #f0fdfa; 
+    color: #10b981;
+    padding: 6px 12px;
+    border-radius: 6px;
+    font-weight: 700;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+}
+
+.value-box input {
+    background: transparent;
+    border: none;
+    width: 60px;
+    text-align: right;
+    font-weight: 700;
+    color: #10b981;
+    outline: none;
+    margin: 0 2px;
+}
+
+/* Custom Slider Styling */
+input[type="range"] {
+    -webkit-appearance: none;
+    width: 100%;
+    height: 4px;
+    background: #e2e8f0;
+    border-radius: 5px;
+    outline: none;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 18px;
+    height: 18px;
+    background: #ffffff;
+    border: 3px solid #10b981; /* Matches the theme color */
+    border-radius: 50%;
+    cursor: pointer;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
 }
