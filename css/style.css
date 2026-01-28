@@ -166,3 +166,20 @@ p {
         height: 250px; /* Slightly smaller on mobile */
     }
 }
+.result-card {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+}
+
+.highlight-box {
+    background: #f8fafc;
+    padding: 15px;
+    border-radius: 10px;
+    border-left: 4px solid #2563eb;
+}
+
+.highlight-box span {
+    font-size: 24px;
+    color: #2563eb;
+}
